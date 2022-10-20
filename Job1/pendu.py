@@ -15,7 +15,22 @@
 
 # import re
 
+
+
+
 lives = 3
+
+difficulty = input("Bonjour, à quel niveau souhaites-tu jouer ? (Débutant, Intermédiaire, Expert) ")
+
+match difficulty:
+    case "Débutant":
+        lives = 10
+    case "Intermédiaire":
+        lives = 7
+    case "Expert":
+        lives = 4
+
+
 
 word = "bonjour"
 # use list to manipulate their value by index
@@ -59,6 +74,8 @@ while True:
     for user_char in user_word_list:
         user_word += user_char + " "
 
-    print("Lettres proposées : {}".format(proposed_characters))
+    if difficulty != "Expert":
+        print("Lettres proposées : {}".format(proposed_characters))
+    
     print(user_word)
     
