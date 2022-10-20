@@ -13,44 +13,52 @@
 # - Les lettres proposées qui se trouvent dans le mot
 # La partie prend fin lorsque le joueur a trouvé le mot, ou qu’il n’a plus de vie.
 
-import re
+# import re
 
 lives = 3
 
 word = "bonjour"
-user_word = []
-# placeholder = ""
+# use list to manipulate their value by index
+word_list = []
+user_word_list = []
 proposed_characters = ""
 
 for char in word:
-    user_word.append('-')
+    word_list.append(char)
+    user_word_list.append('_')
 
-print(user_word)
-print("Nombre de vies restantes : {}".format(lives))
-# print(placeholder)
 
 while True:
+    print("Vies restantes : {}".format(lives))
+
     if lives <= 0:
         print("Perdu !")
         break
+    elif user_word_list == word_list:
+        print("C'est gagné !")
+        break
 
     user_input = input("Quelle lettre proposes-tu ? ")
+
+    # x will be used to send the user character to the corresponding index, if matching with the word character
     x = 0
     nb_matches = 0
 
     for char in word:
         if user_input == char:
-            user_word[x] = char
+            user_word_list[x] = char
             nb_matches += 1
         x += 1
-
-
 
     if nb_matches == 0:
         lives -= 1
 
-    print("word : {}, userword : {}".format(word, user_word))
-    print("Vies restantes : {}".format(lives))
+    proposed_characters += user_input + " "
 
-    if word == user_word:
-        break
+    user_word = ""
+    for user_char in user_word_list:
+        user_word += user_char + " "
+
+    print("Lettres proposées : {}".format(proposed_characters))
+    print(user_word)
+    
