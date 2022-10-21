@@ -13,9 +13,10 @@
 # - Les lettres proposées qui se trouvent dans le mot
 # La partie prend fin lorsque le joueur a trouvé le mot, ou qu’il n’a plus de vie.
 
-# import re
+import random
 
-
+dictionary = open("dico_france.txt").readlines()
+# print(dictionary)
 
 
 lives = 3
@@ -30,9 +31,12 @@ match difficulty:
     case "Expert":
         lives = 4
 
+# word = "bonjour"
+word = random.choice(dictionary)
 
+# remove last character from word which is a line break \n
+word = word[:-1]
 
-word = "bonjour"
 # use list to manipulate their value by index
 word_list = []
 user_word_list = []
@@ -53,6 +57,7 @@ while True:
         print("C'est gagné !")
         break
 
+    print(word)
     user_input = input("Quelle lettre proposes-tu ? ")
 
     # x will be used to send the user character to the corresponding index, if matching with the word character
