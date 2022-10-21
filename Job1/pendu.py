@@ -15,12 +15,85 @@
 
 import random
 
+
+def myUpperASCII(myString:str):
+    string_list = list(myString)
+    to_up_ascii = {
+        "a" : "A",
+        "b" : "B",
+        "c" : "C",
+        "d" : "D",
+        "e" : "E",
+        "f" : "F",
+        "g" : "G",
+        "h" : "H",
+        "i" : "I",
+        "j" : "J",
+        "k" : "K",
+        "l" : "L",
+        "m" : "M",
+        "n" : "N",
+        "o" : "O",
+        "p" : "P",
+        "q" : "Q",
+        "r" : "R",
+        "s" : "S",
+        "t" : "T",
+        "u" : "U",
+        "v" : "V",
+        "w" : "W",
+        "x" : "X",
+        "y" : "Y",
+        "z" : "Z",
+        "à" : "A",
+        "â" : "A",
+        "é" : "E",
+        "è" : "E",
+        "ê" : "E",
+        "ë" : "E",
+        "î" : "I",
+        "ï" : "I",
+        "ô" : "O",
+        "ö" : "O",
+        "ù" : "U",
+        "û" : "U",
+        "ü" : "U",        
+        "À" : "A",
+        "Â" : "A",
+        "É" : "E",
+        "È" : "E",
+        "Ê" : "E",
+        "Ë" : "E",
+        "î" : "I",
+        "Ï" : "I",
+        "ô" : "O",
+        "Ö" : "O",
+        "Ù" : "U",
+        "û" : "U",
+        "Ü" : "U",
+    }
+
+    # x used for string_list handling by index
+    x = 0
+    for char in string_list:
+        # if char is in the keys of to_up_ascii, replace the current character by the value of the key of the dictionnary
+        if char in to_up_ascii:
+            string_list[x] = to_up_ascii[char]
+        x += 1
+            
+    upper_string = ""
+    for char in string_list:
+        upper_string += char
+
+    return upper_string
+
+
 with open("dico_france.txt") as data:
     dictionary = data.readlines()
-print(dictionary)
+# print(dictionary)
 
-# word = "bonjour"
-word = random.choice(dictionary)
+word = myUpperASCII(random.choice(dictionary))
+# print(word)
 
 # remove last character from word which is a line break \n
 word = word[:-1]
@@ -58,8 +131,8 @@ while True:
         print("C'est gagné !")
         break
 
-    print(word_list)
-    user_input = input("Quelle lettre proposes-tu ? ")
+    # print(word_list)
+    user_input = myUpperASCII(input("Quelle lettre proposes-tu ? "))
 
     # x will be used to send the user character to the corresponding index, if matching with the word character
     x = 0
