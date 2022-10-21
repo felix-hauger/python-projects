@@ -15,21 +15,9 @@
 
 import random
 
-dictionary = open("dico_france.txt").readlines()
-# print(dictionary)
-
-
-lives = 3
-
-difficulty = input("Bonjour, à quel niveau souhaites-tu jouer ? (Débutant, Intermédiaire, Expert) ")
-
-match difficulty:
-    case "Débutant":
-        lives = 10
-    case "Intermédiaire":
-        lives = 7
-    case "Expert":
-        lives = 4
+with open("dico_france.txt") as data:
+    dictionary = data.readlines()
+print(dictionary)
 
 # word = "bonjour"
 word = random.choice(dictionary)
@@ -47,6 +35,17 @@ for char in word:
     word_list.append(char)
     user_word_list.append('_')
 
+lives = 2
+
+difficulty = input("Bonjour, à quel niveau souhaites-tu jouer ? (Débutant, Intermédiaire, Expert) ")
+
+match difficulty:
+    case "Débutant":
+        lives = 10
+    case "Intermédiaire":
+        lives = 7
+    case "Expert":
+        lives = 4
 
 while True:
     print("Vies restantes : {}".format(lives))
@@ -59,7 +58,7 @@ while True:
         print("C'est gagné !")
         break
 
-    print(word)
+    print(word_list)
     user_input = input("Quelle lettre proposes-tu ? ")
 
     # x will be used to send the user character to the corresponding index, if matching with the word character
