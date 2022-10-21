@@ -110,14 +110,14 @@ for char in word:
 
 lives = 2
 
-difficulty = input("Bonjour, à quel niveau souhaites-tu jouer ? (Débutant, Intermédiaire, Expert) ")
+difficulty = myUpperASCII(input("Bonjour, à quel niveau souhaites-tu jouer ? (Débutant, Intermédiaire, Expert) "))
 
 match difficulty:
-    case "Débutant":
+    case "DEBUTANT":
         lives = 10
-    case "Intermédiaire":
+    case "INTERMEDIAIRE":
         lives = 7
-    case "Expert":
+    case "EXPERT":
         lives = 4
 
 while True:
