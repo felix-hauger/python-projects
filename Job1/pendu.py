@@ -37,9 +37,10 @@ word = random.choice(dictionary)
 # remove last character from word which is a line break \n
 word = word[:-1]
 
-# use list to manipulate their value by index
+# use lists to manipulate their value by index
 word_list = []
 user_word_list = []
+
 proposed_characters = ""
 
 for char in word:
@@ -50,6 +51,7 @@ for char in word:
 while True:
     print("Vies restantes : {}".format(lives))
 
+    # game over conditions
     if lives <= 0:
         print("Perdu !")
         break
@@ -62,8 +64,10 @@ while True:
 
     # x will be used to send the user character to the corresponding index, if matching with the word character
     x = 0
+    # nb_matches will be used to handle lives variable
     nb_matches = 0
 
+    # add the corresponding character to the list if user guess is correct
     for char in word:
         if user_input == char:
             user_word_list[x] = char
@@ -75,6 +79,7 @@ while True:
 
     proposed_characters += user_input + " "
 
+    # add the variable to display the user_word with values found by user
     user_word = ""
     for user_char in user_word_list:
         user_word += user_char + " "
